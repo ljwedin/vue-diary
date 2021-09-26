@@ -1,9 +1,9 @@
-<template lang="">
+<template>
     <div>
         <form @submit="handleSubmit">
             Title: <input type="text" v-model="post.title" id="postTitle"><br />
             Text: <input type="text" v-model="post.text" id="postText"><br />
-            <button type="submit">Save post</button>
+            <button>Save post</button>
         </form>
     </div>
 </template>
@@ -15,9 +15,16 @@ export default {
         post: {
             type: Object,
         }
+    },
+
+    methods: {
+        handleSubmit(e) {
+            e.preventDefault();
+            this.$emit("save", e);
+        }
     }
 }
 </script>
-<style lang="">
+<style>
     
 </style>
