@@ -1,17 +1,43 @@
 <template>
   <div id="app">
+    <h1>Vue diary</h1>
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <DiaryPosts :diaryPosts="diaryPosts" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DiaryPosts from './components/DiaryPosts.vue';
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
+    DiaryPosts
+  },
+  
+  data() {
+    return {
+      diaryPosts: JSON.parse(localStorage.getItem('diaryPosts'))
+    }
+  },
+
+  mounted() {
+    const diaryPostOne = {
+      date: new Date(),
+      title: "titel",
+      text: "text"
+    }
+
+    const diaryPostTwo = {
+      date: new Date(),
+      title: "titel3",
+      text: "text2"
+    }
+
+    let diaryPosts = [diaryPostOne, diaryPostTwo]
+    // console.log(diaryPosts)
+    localStorage.setItem("diaryPosts", JSON.stringify(diaryPosts));
   }
 }
 </script>
