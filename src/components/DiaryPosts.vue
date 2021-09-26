@@ -12,7 +12,7 @@
 export default {
     name: "DiaryPosts",
 
-    props: [ 'diaryPosts' ]
+    props: [ 'diaryPosts' ],
 }
 </script>
 
